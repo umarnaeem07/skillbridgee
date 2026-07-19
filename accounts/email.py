@@ -40,3 +40,40 @@ SkillBridge Team
         recipient_list=[user.email],
         fail_silently=False,
     )
+
+def send_password_reset_email(user):
+
+    uid = generate_uid(user)
+
+    token = generate_token(user)
+
+    reset_link = (
+        f"{settings.BACKEND_URL}"
+        f"/api/auth/reset-password/"
+        f"{uid}/{token}/"
+    )
+
+    subject = "Reset your SkillBridge password"
+
+    message = f"""
+Hi {user.first_name},
+
+We received a request to reset your SkillBridge password.
+
+Click the link below to reset your password:
+
+{reset_link}
+
+If you didn't request a password reset, you can safely ignore this email.
+
+Thanks,
+SkillBridge Team
+"""
+
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[user.email],
+        fail_silently=False,
+    )

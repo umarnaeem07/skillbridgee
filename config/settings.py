@@ -134,19 +134,25 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATIC_URL = 'static/'
 
-# REST_FRAMEWORK = {
-#     "DEFAULT_PERMISSION_CLASSES": [
-#         "rest_framework.permissions.IsAuthenticated",
-#     ],
-# }
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
-    ],
 
-    "DEFAULT_RENDERER_CLASSES": [
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+
+    ),
+
+    "DEFAULT_PERMISSION_CLASSES": (
+
+        "rest_framework.permissions.AllowAny",
+
+    ),
+
+    "DEFAULT_RENDERER_CLASSES": (
+
         "rest_framework.renderers.JSONRenderer",
-    ],
+
+    ),
 }
 LANGUAGE_CODE = "en-us"
 
