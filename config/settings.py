@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     "rest_framework_simplejwt.token_blacklist",
     'accounts',
+    'skills',
+    'categories',
+    'workers',
+    'customers',
+    'workerdocuments',
 ]
 
 from datetime import timedelta
@@ -175,3 +180,8 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 BACKEND_URL = config("BACKEND_URL")
+
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / "media"
